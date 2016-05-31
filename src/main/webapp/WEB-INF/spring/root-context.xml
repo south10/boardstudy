@@ -30,4 +30,5 @@
     </bean>
 
     <context:component-scan base-package="me.south10.persistence"/>
+    <context:component-scan base-package="me.south10.service"/>
 </beans>
