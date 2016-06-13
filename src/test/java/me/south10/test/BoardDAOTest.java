@@ -2,13 +2,17 @@ package me.south10.test;
 
 import lombok.extern.slf4j.Slf4j;
 import me.south10.domain.BoardVO;
+import me.south10.domain.Criteria;
 import me.south10.persistence.BoardDAO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.inject.Inject;
+import java.util.List;
 
 /**
  * Created by south10 on 2016-06-13.
@@ -51,5 +55,52 @@ public class BoardDAOTest {
     @Test
     public void testListAll() throws Exception {
         log.info(dao.listAll().toString());
+    }
+
+    @Test
+    public void testListPage() throws Exception {
+        int page = 3;
+        List<BoardVO> list = dao.listPage(page);
+
+        for(BoardVO vo : list){
+            log.info(vo.getBno() + ":" + vo.getTitle());
+        }
+    }
+
+    @Test
+    public void testListCriteria() throws Exception {
+        Criteria cri = new Criteria();
+        cri.setPage(2);
+        cri.setPerPageNum(20);
+        List<BoardVO> list = dao.listCriteria(cri);
+
+        for(BoardVO vo : list){
+            log.info(vo.getBno() + ":" + vo.getTitle());
+        }
+    }
+
+    @Test
+    public void testURI() throws Exception {
+        UriComponents uriComponents = UriComponentsBuilder.newInstance()
+                .path("/board/read")
+                .queryParam("bno", 12)
+                .queryParam("perPageNum", 20)
+                .build();
+
+        log.info("/board/read?bno=12&perPageNum=20");
+        log.info(uriComponents.toString());
+    }
+
+    @Test
+    public void testURI2() throws Exception {
+        UriComponents uriComponents = UriComponentsBuilder.newInstance()
+                .path("/{module}/{page}")
+                .queryParam("bno", 12)
+                .queryParam("perPageNum", 20)
+                .build()
+                .expand("board","read")
+                .encode();
+        log.info("/board/read?bno=12&perPageNum=20");
+        log.info(uriComponents.toString());
     }
 }
