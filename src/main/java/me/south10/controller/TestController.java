@@ -10,7 +10,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  * Created by south10 on 2016-06-10.
  */
 @Controller
-@RequestMapping("/test/*")
 @Slf4j
 public class TestController {
     @RequestMapping(value = "/doA", method = RequestMethod.GET)
@@ -33,5 +32,10 @@ public class TestController {
     public String doD(String msg){
         log.info("msg : " + msg);
         return "doD";
+    }
+
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    public void ajaxTest(){
+
     }
 }
