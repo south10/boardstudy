@@ -2,6 +2,7 @@ package me.south10.service;
 
 import me.south10.domain.BoardVO;
 import me.south10.domain.Criteria;
+import me.south10.domain.SearchCriteria;
 
 import java.util.List;
 
@@ -22,4 +23,8 @@ public interface BoardService {
     public List<BoardVO> listCriteria(Criteria cri) throws Exception;
 
     public int countPaging(Criteria cri) throws Exception;
+
+    public List<BoardVO> listSearchCriteria(SearchCriteria cri) throws Exception;
+
+    public int listSearchCount(SearchCriteria cri) throws Exception;
 }

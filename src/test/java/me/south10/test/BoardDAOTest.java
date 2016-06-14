@@ -3,6 +3,7 @@ package me.south10.test;
 import lombok.extern.slf4j.Slf4j;
 import me.south10.domain.BoardVO;
 import me.south10.domain.Criteria;
+import me.south10.domain.SearchCriteria;
 import me.south10.persistence.BoardDAO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -102,5 +103,24 @@ public class BoardDAOTest {
                 .encode();
         log.info("/board/read?bno=12&perPageNum=20");
         log.info(uriComponents.toString());
+    }
+
+    @Test
+    public void testDynamic() throws Exception {
+        SearchCriteria cri = new SearchCriteria();
+        cri.setPage(1);
+        cri.setKeyword("스프링");
+        cri.setSearchType("t");
+
+        log.info("=====================================");
+
+        List<BoardVO> list = dao.listSearch(cri);
+
+        for(BoardVO vo : list){
+            log.info(vo.getBno() + ":" + vo.getTitle());
+        }
+
+        log.info("=====================================");
+        log.info("COUNT : " + dao.listSearchCount(cri));
     }
 }

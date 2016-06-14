@@ -2,6 +2,7 @@ package me.south10.persistence;
 
 import me.south10.domain.BoardVO;
 import me.south10.domain.Criteria;
+import me.south10.domain.SearchCriteria;
 
 import java.util.List;
 
@@ -24,4 +25,10 @@ public interface BoardDAO {
     public List<BoardVO> listCriteria(Criteria cri) throws Exception;
 
     public int countPaging(Criteria cri) throws Exception;
+
+    //use for dynamic sql
+
+    public List<BoardVO> listSearch(SearchCriteria cri)throws Exception;
+
+    public int listSearchCount(SearchCriteria cri)throws Exception;
 }

@@ -2,6 +2,7 @@ package me.south10.service;
 
 import me.south10.domain.BoardVO;
 import me.south10.domain.Criteria;
+import me.south10.domain.SearchCriteria;
 import me.south10.persistence.BoardDAO;
 import org.springframework.stereotype.Service;
 
@@ -49,5 +50,15 @@ public class BoardServiceImpl implements BoardService{
     @Override
     public int countPaging(Criteria cri) throws Exception {
         return dao.countPaging(cri);
+    }
+
+    @Override
+    public List<BoardVO> listSearchCriteria(SearchCriteria cri) throws Exception {
+        return dao.listSearch(cri);
+    }
+
+    @Override
+    public int listSearchCount(SearchCriteria cri) throws Exception {
+        return dao.listSearchCount(cri);
     }
 }
