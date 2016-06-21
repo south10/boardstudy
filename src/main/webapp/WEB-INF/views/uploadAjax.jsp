@@ -62,7 +62,7 @@
                     }else{
                         str = "<div><a href='displayFile?fileName=" + data + "'>"
                             + getOriginalName(data) + "</a>"
-                                +"<small data-src="+data+">X</small></div></div>";
+                                +"<small data-src=\""+data+"\">X</small></div>";
                     }
 
                     $(".uploadedList").append(str);
