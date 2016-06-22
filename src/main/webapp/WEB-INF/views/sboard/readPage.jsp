@@ -303,7 +303,7 @@
             formObj.submit();
         });
         $("#removeBtn").on("click", function () {
-            var replyCnt =  $("#replycntSmall").html();
+            var replyCnt =  $("#replycntSmall").html().replace(/[^0-9]/g,"");
 
             if(replyCnt > 0 ){
                 alert("댓글이 달린 게시물을 삭제할 수 없습니다.");

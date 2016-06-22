@@ -53,7 +53,7 @@
                         </div>
                     </div>
                     <!-- /.box-body -->
-                </form>
+
 
 
                 <div class="box-footer">
@@ -67,6 +67,7 @@
                     <button type="submit" class="btn btn-primary">SAVE</button>
                     <button type="submit" class="btn btn-warning">CANCEL</button>
                 </div>
+                </form>
             </div>
             <!-- /.box -->
         </div>
@@ -98,7 +99,7 @@
 
         formObj.submit(function(event){
             event.preventDefault();
-
+            console.log("call");
             var that = $(this);
 
             var str ="";

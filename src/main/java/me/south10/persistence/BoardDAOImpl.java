@@ -109,6 +109,6 @@ public class BoardDAOImpl implements BoardDAO{
         Map<String, Object> map = new HashMap<>();
         map.put("bno", bno);
         map.put("fullName", fullName);
-        session.insert(namespace + "replaceAttach", map);
+        session.insert(namespace + ".replaceAttach", map);
     }
 }
