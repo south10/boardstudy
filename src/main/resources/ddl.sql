@@ -83,3 +83,9 @@ create table tbl_attach(
 
 alter table tbl_attach add constraint fk_board_attach
 foreign key (bno) references tbl_board(bno);
+
+alter table tbl_user add COLUMN
+sessionkey varchar(50) not null default 'none';
+
+alter table tbl_user add COLUMN
+sessionlimit timestamp;

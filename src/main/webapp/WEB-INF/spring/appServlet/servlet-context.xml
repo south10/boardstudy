@@ -29,4 +29,26 @@
 		<beans:constructor-arg value="C:\\img\\upload"/>
 	</beans:bean>
 	<context:component-scan base-package="me.south10.controller" />
+
+	<beans:bean id="sampleInterceptor" class="me.south10.interceptor.SampleInterceptor"/>
+	<beans:bean id="loginInterceptor" class="me.south10.interceptor.LoginInterceptor"/>
+	<beans:bean id="authInterceptor" class="me.south10.interceptor.AuthInterceptor"/>
+
+	<interceptors>
+		<interceptor>
+			<mapping path="/user/loginPost"/>
+			<beans:ref bean="loginInterceptor"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/sboard/register"/>
+			<mapping path="/sboard/modifyPage"/>
+			<mapping path="/sboard/removePage"/>
+			<beans:ref bean="authInterceptor"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/doA"/>
+			<mapping path="/doB"/>
+			<beans:ref bean="sampleInterceptor"/>
+		</interceptor>
+	</interceptors>
 </beans:beans>

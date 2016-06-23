@@ -2,9 +2,12 @@ package me.south10.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.Locale;
 
 /**
  * Created by south10 on 2016-06-10.
@@ -13,13 +16,16 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Slf4j
 public class TestController {
     @RequestMapping(value = "/doA", method = RequestMethod.GET)
-    public void doA(){
+    public String doA(){
         log.info("doA 호출");
+        return "home";
     }
 
     @RequestMapping(value = "/doB", method = RequestMethod.GET)
-    public void doB(String bno){
-        log.info("bno : {}", bno);
+    public String doB(Locale locale, Model model){
+        log.info("doB 호출");
+        model.addAttribute("result", "DOB RESULT");
+        return "home";
     }
 
     @RequestMapping(value = "/doC", method = RequestMethod.GET)
